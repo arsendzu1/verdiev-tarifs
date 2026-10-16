@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Выберите свой путь — Марат Вердиев</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4EDE6;
+    --card: #FBF7F3;
+    --border: #E6D8C9;
+    --text: #2E2119;
+    --accent: #A88763;
+    --on-accent: #FFFFFF;
+    --old-price: #9C8B7D;
+    --head: "Oswald", "Bebas Neue", "Arial Narrow", sans-serif;
+    --body: "Roboto", system-ui, -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text);
+    background-color: var(--bg);
+    /* лёгкая бумажная текстура */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.13 0 0 0 0 0.1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a { color: inherit; }
+
+  /* ---------- Тарифы ---------- */
+  .pricing {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 72px 24px 80px;
+  }
+
+  .pricing__head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .pricing__title {
+    margin: 0;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(36px, 6vw, 60px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .pricing__title::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 18px auto 0;
+    background: var(--accent);
+  }
+
+  .pricing__subtitle {
+    margin: 20px 0 0;
+    font-size: clamp(16px, 2vw, 19px);
+  }
+
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .plan {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .plan__label {
+    align-self: flex-start;
+    margin: 0 0 14px;
+    padding: 4px 12px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    font-family: var(--head);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .plan__name {
+    margin: 0;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+
+  .plan__term {
+    margin: 8px 0 0;
+    font-weight: 500;
+  }
+
+  .plan__term span { color: var(--accent); }
+
+  .plan__section { margin-top: 22px; }
+
+  .plan__section-title {
+    display: inline-block;
+    margin: 0 0 8px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid var(--accent);
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .plan__section p { margin: 0; }
+
+  .plan__price {
+    margin-top: auto;
+    padding-top: 28px;
+  }
+
+  .plan__price-inner {
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .plan__old {
+    display: block;
+    font-size: 18px;
+    color: var(--old-price);
+    text-decoration: line-through;
+  }
+
+  .plan__new {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.1;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 14px 22px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: filter .2s ease, transform .2s ease;
+  }
+
+  .btn:hover { filter: brightness(0.92); }
+  .btn:active { transform: translateY(1px); }
+  .btn:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+
+  .plan .btn {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .plan .btn--outline {
+    margin-top: 10px;
+    background: transparent;
+    color: var(--accent);
+    box-shadow: inset 0 0 0 2px var(--accent);
+  }
+
+  .plan .btn--outline:hover {
+    filter: none;
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  /* ---------- Футер ---------- */
+  .footer {
+    padding: 28px 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .footer a {
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  .footer a:hover { color: var(--accent); }
+
+  /* ---------- Cookie-баннер ---------- */
+  .cookie {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 18px 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(46, 33, 25, 0.12);
+    font-size: 14px;
+  }
+
+  .cookie[hidden] { display: none; }
+
+  .cookie p { margin: 0; flex: 1; }
+
+  .cookie a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  .cookie .btn {
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 10px 26px;
+    font-size: 15px;
+  }
+
+  /* ---------- Адаптив ---------- */
+  @media (max-width: 960px) {
+    .plans {
+      grid-template-columns: 1fr;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .pricing { padding: 48px 16px 56px; }
+    .pricing__head { margin-bottom: 32px; }
+    .plan { padding: 26px 20px 22px; }
+    .plan__name { font-size: 26px; }
+    .plan__new { font-size: 36px; }
+
+    .cookie {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      padding: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<main class="pricing">
+  <header class="pricing__head">
+    <h1 class="pricing__title">Выберите свой путь</h1>
+    <p class="pricing__subtitle">За 30 дней вернуть себе спокойствие и лёгкость и чувствовать себя лучше, чем когда-либо.</p>
+  </header>
+
+  <div class="plans">
+    <article class="plan">
+      <p class="plan__label">Тариф 1</p>
+      <h2 class="plan__name">Первый шаг</h2>
+      <p class="plan__term">Срок: <span>7 дней</span></p>
+
+      <div class="plan__section">
+        <h3 class="plan__section-title">Что внутри</h3>
+        <p>Каждый день короткое задание и аудио от Марата, групповая встреча с психологом команды, общий чат участниц. Бонусом — записи эфиров Марата.</p>
+      </div>
+
+      <div class="plan__section">
+        <h3 class="plan__section-title">Результат</h3>
+        <p>Через неделю вы чувствуете, что стало легче и спокойнее.</p>
+      </div>
+
+      <div class="plan__price">
+        <div class="plan__price-inner">
+          <s class="plan__old">20&nbsp;000&nbsp;₽</s>
+          <span class="plan__new">10&nbsp;000&nbsp;₽</span>
+        </div>
+        <a class="btn" href="https://payform.ru/g5cOILP/" target="_blank" rel="noopener">Сделать первый шаг</a>
+        <a class="btn btn--outline" href="https://payform.ru/5ocOOn7/" target="_blank" rel="noopener">Бронь</a>
+      </div>
+    </article>
+
+    <article class="plan">
+      <p class="plan__label">Тариф 2</p>
+      <h2 class="plan__name">Месяц с командой Марата</h2>
+      <p class="plan__term">Срок: <span>4 недели</span></p>
+
+      <div class="plan__section">
+        <h3 class="plan__section-title">Что внутри</h3>
+        <p>Еженедельная групповая терапия в малых группах до 12 женщин, личный куратор, разбор вашей ситуации.</p>
+      </div>
+
+      <div class="plan__section">
+        <h3 class="plan__section-title">Результат</h3>
+        <p>Через месяц вы просыпаетесь в состоянии 10 из 10.</p>
+      </div>
+
+      <div class="plan__price">
+        <div class="plan__price-inner">
+          <s class="plan__old">50&nbsp;000&nbsp;₽</s>
+          <span class="plan__new">25&nbsp;000&nbsp;₽</span>
+        </div>
+        <a class="btn" href="https://payform.ru/k9cOIO1/" target="_blank" rel="noopener">Выбрать месяц</a>
+        <a class="btn btn--outline" href="https://payform.ru/5ocOOn7/" target="_blank" rel="noopener">Бронь</a>
+      </div>
+    </article>
+
+    <article class="plan">
+      <p class="plan__label">Тариф 3</p>
+      <h2 class="plan__name">Личная терапия</h2>
+      <p class="plan__term">Срок: <span>несколько месяцев</span></p>
+
+      <div class="plan__section">
+        <h3 class="plan__section-title">Что внутри</h3>
+        <p>Индивидуальная работа с командой Марата при его личном участии. Для тех, кто готов к глубокой работе.</p>
+      </div>
+
+      <div class="plan__section">
+        <h3 class="plan__section-title">Результат</h3>
+        <p>Вы глубоко разбираете свою ситуацию и возвращаете себе спокойствие и лёгкость надолго.</p>
+      </div>
+
+      <div class="plan__price">
+        <div class="plan__price-inner">
+          <s class="plan__old">300&nbsp;000&nbsp;₽</s>
+          <span class="plan__new">150&nbsp;000&nbsp;₽</span>
+        </div>
+        <a class="btn" href="https://t.me/Blogverdiassistant" target="_blank" rel="noopener">Написать менеджеру</a>
+        <a class="btn btn--outline" href="https://payform.ru/5ocOOn7/" target="_blank" rel="noopener">Бронь</a>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  © 2026 Марат Вердиев · <a href="https://blogverdi.ru/policy" target="_blank" rel="noopener">Политика конфиденциальности</a>
+</footer>
+
+<div class="cookie" id="cookie" role="region" aria-label="Уведомление о cookie" hidden>
+  <p>Мы используем файлы cookie, чтобы сайт работал корректно. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="https://blogverdi.ru/policy" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
+  <button class="btn" type="button" id="cookie-accept">Понятно</button>
+</div>
+
+<script>
+  (function () {
+    var KEY = "cookieConsent";
+    var banner = document.getElementById("cookie");
+    var accepted = false;
+
+    try {
+      accepted = localStorage.getItem(KEY) === "1";
+    } catch (e) {}
+
+    if (!accepted) banner.hidden = false;
+
+    document.getElementById("cookie-accept").addEventListener("click", function () {
+      banner.hidden = true;
+      try {
+        localStorage.setItem(KEY, "1");
+      } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>
